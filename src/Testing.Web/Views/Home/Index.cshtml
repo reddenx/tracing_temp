@@ -1,0 +1,49 @@
+﻿<div class="container mt-5" id="bound-context">
+
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    Message: {{traceMessage}}
+                    <br />
+                    <button class="btn btn-primary"
+                            v-on:click="runTest">
+                        Run Test
+                    </button>
+                    <br />
+                    <input class="form-control"
+                           placeholder="sending trace id" 
+                           v-model="inputTraceId"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#bound-context',
+        data: {
+            traceMessage: '',
+            inputTraceId: '',
+        },
+        methods: {
+            runTest: function () {
+                this.traceMessage = 'running...';
+                var self = this;
+                $.ajax({
+                    url: '/api/trace/test',
+                    method: 'POST',
+                    headers: {
+                        'smt-tracing-trace-id': this.inputTraceId,
+                    },
+                }).done(function (data) {
+                    self.traceMessage = JSON.stringify(data);
+                }).fail(function (xhr, error, message) {
+                    self.traceMessage = 'error - ' + message;
+                })
+            },
+        },
+    });
+</script>
