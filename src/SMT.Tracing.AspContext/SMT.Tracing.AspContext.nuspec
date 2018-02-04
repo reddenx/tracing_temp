@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>PotatoSoft.SMT.Tracing.AspContext</id>
-    <version>1.0.0</version>
+    <version>0.0.1</version>
     <title>$title$</title>
     <authors>Sean Marek</authors>
     <owners>Sean Marek</owners>
@@ -15,6 +15,7 @@
 	<dependencies>
 		<dependency id="Microsoft.Owin" version="3.1.0" />
 		<dependency id="Owin" version="1.0" />
+		<dependency id="PotatoSoft.SMT.Tracing.Core" version="0.0.1" />
 	</dependencies>
 
 	<frameworkAssemblies>
